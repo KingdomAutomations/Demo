@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Initialize the database
+echo "Initializing database..."
+python initialize_db.py
+
+# Start the web server with the database-backed app
+echo "Starting web server..."
+gunicorn --bind 0.0.0.0:5000 --reuse-port --reload app_db:app
